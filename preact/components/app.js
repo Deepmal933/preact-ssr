@@ -1,10 +1,9 @@
-import Preact from 'preact'
-import {h, render} from 'preact';
-import { Navbar } from './navbar'
+import { h } from 'preact';
 const App = () => {
 
     return <div class="app" id="app">
-        <Navbar/>
-        dssdds</div>
+        <p>👋Hi, There</p>
+    </div>
+    
 };
 export default App;

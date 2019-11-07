@@ -25,18 +25,13 @@ app.get(BUNDLE_FILE_URL, function (req, res) {
     res.send(data);
   });
 });
-app.get('/', function (req, res) {
+app.get('**', function (req, res) {
   //render App component
-  var data = (0, _preactRenderToString["default"])((0, _preact.h)(_app["default"], null));
-  res.send("\n    <html>\n    <head>\n    <title>Preact App</title>\n    </head>\n    <body>\n    ".concat(data, "\n    <script>window.__backend_data__ = ").concat(JSON.stringify(data), ";</script>\n    <script src=\"").concat(BUNDLE_FILE_URL, "\"></script>\n    </body>\n    </html>\n    "));
+  var data = (0, _preactRenderToString["default"])((0, _preact.h)(_app["default"], null)); //SSR html code 
+
+  res.send("\n    <html>\n    <head>\n    <title>Preact App</title>\n    </head>\n    <body>\n    ".concat(data, "\n    <script src=\"").concat(BUNDLE_FILE_URL, "\"></script>\n    </body>\n    </html>\n    "));
 });
-app.get('/data', function (req, res) {
-  res.send({
-    name: "deep",
-    email: "deepmal933@gmail.com"
-  });
-});
-var PORT = process.env.PORT || 3004;
+var PORT = process.env.PORT || 3000;
 app.listen(PORT, function () {
-  console.log("Server is listning on port " + PORT);
+  console.log("Server is Running on port " + PORT);
 });

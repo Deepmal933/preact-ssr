@@ -17,11 +17,12 @@ app.get(BUNDLE_FILE_URL,(req,res)=>{
     })
 })
 
-app.get('/',(req,res)=>{
+app.get('**',(req,res)=>{
 
     //render App component
     let data = render(<App/>);
 
+    //SSR html code 
     res.send(`
     <html>
     <head>
@@ -29,17 +30,13 @@ app.get('/',(req,res)=>{
     </head>
     <body>
     ${data}
-    <script>window.__backend_data__ = ${JSON.stringify(data)};</script>
     <script src="${BUNDLE_FILE_URL}"></script>
     </body>
     </html>
     `);
 })
 
-app.get('/data',(req,res)=>{
-    res.send({name:"deep",email:"deepmal933@gmail.com"});
-})
-const PORT = process.env.PORT || 3004
+const PORT = process.env.PORT || 3000
 app.listen(PORT,()=>{
-console.log("Server is listning on port "+PORT);
+console.log("Server is Running on port "+PORT);
 });

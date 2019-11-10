@@ -17,7 +17,7 @@ app.get(BUNDLE_FILE_URL,(req,res)=>{
     })
 })
 
-app.get('**',(req,res)=>{
+app.get('/*',(req,res)=>{
 
     //render App component
     let data = render(<App/>);
